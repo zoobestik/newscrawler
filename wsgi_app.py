@@ -1,27 +1,32 @@
 # coding: utf-8
-import bottle, urllib2, datetime
-from BeautifulSoup import BeautifulSoup
+import bottle, datetime, httplib2
 from urlparse import urljoin
 from bottle import view, response, route, error, template
+import lxml.html as lhtml
 
-@route('/feed/sports.ru/tribuna/automoto/')
+def render(element):
+	return element.text + "".join(map (lambda x: lhtml.tostring(x, encoding='UTF-8'), element))
+
+@route('/sports.ru/tribuna/automoto/')
 def generate_feed():
 	link, items = 'http://www.sports.ru/tribuna/automoto/', []
-	html = urllib2.urlopen(link).read()
+	resp, html = http.request(link, 'GET')
 
 	now = datetime.datetime.utcnow().strftime('%a, %d %b %Y %H:%M:%S GMT')
-	response.content_type = 'text/xml; charset=utf-8'
-	soup = BeautifulSoup(html)
-	posts = soup.findAll('div', attrs={'class' : 'blog-content'})
+	response.content_type = 'text/xml; charset=utf-8' 
+	soup = lhtml.document_fromstring(html)
+	posts = soup.xpath('//div[@class="blog-content"]')
 
 	for post in posts:
-		lnk = post.find('h2').extract().find('a')
-		url = urljoin(link, lnk['href'])
+		h2  = post.xpath('h2')[0]
+		lnk = h2.xpath('.//a')[0]
+		h2.drop_tree()
+		url = urljoin(link, lnk.attrib['href'])
 		items.append({
-			'title': lnk.renderContents(),
+			'title': render(lnk).strip(),
 			'link': url,
 			'guid': url,
-			'description': post.prettify()
+			'description':  render(post)
 		})
 
 	return template('rss2.0', template_settings=dict(noescape=True), **(dict(title='Sports.Ru: «Трибуна» – лучшее.', 
@@ -29,4 +34,6 @@ def generate_feed():
 			last_build_date=now, pub_date=now, items=items,
 			copyright='1998–2011 © Sports.ru')))
 
+
+http = httplib2.Http()
 application = bottle.default_app()
