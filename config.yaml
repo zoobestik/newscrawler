@@ -1,0 +1,30 @@
+urls:
+   #------------------------------------------------------------------
+   - url:   http://www.sports.ru/tribuna/automoto/
+     parse: ru_sports_tribuna
+
+   - url:   http://www.sports.ru/tribuna/automoto/new.html
+     parse: ru_sports_tribuna
+
+   - url:   http://www.sports.ru/tribuna/automoto/f1/
+     parse: ru_sports_tribuna
+
+   - url:   http://www.sports.ru/tribuna/automoto/f1/new.html
+     parse: ru_sports_tribuna
+
+   - url:   http://www.sports.ru/tribuna/automoto/series/
+     parse: ru_sports_tribuna
+
+   - url:   http://www.sports.ru/tribuna/automoto/series/new.html
+     parse: ru_sports_tribuna
+   #------------------------------------------------------------------
+
+
+perset_info:
+   #------------------------------------------------------------------
+   ru_sports_tribuna:
+      title:     "Sports.Ru: «Трибуна» – лучшее."
+      lang:      "ru-RU"
+      descr:     "Sports.Ru: «Трибуна» – это крупнейшее русскоязычное сообщество спортивных болельщиков, первое социальное медиа о спорте, которое создают сами пользователи."
+      copyright: "1998–2011 © Sports.ru"
+   #------------------------------------------------------------------
