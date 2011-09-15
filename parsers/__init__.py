@@ -44,7 +44,6 @@ class PageParser():
 class RuSportsTribuna(PageParser):
 
     def get_common_info(self, soup):
-        now = get_now_standart_format()
         return {
                 'title':'Sports.Ru: «Трибуна» – лучшее.',
                 'lang': 'ru-RU',

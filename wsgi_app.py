@@ -1,12 +1,12 @@
 # coding: utf-8
 import sys, os
 from bottle import response, route, debug, default_app, template
-from parse import get_feed_parser_by_id
+from parsers import get_feed_parser_by_id
 from lib.config import get_config_data
 
 sys.path.append(os.path.abspath(os.path.dirname(__file__)))
 
-@route('/:is_page_exist#(index\.html)?#', template='index')
+@route('/:is_page_exist#(index\.html?)?#', template='index')
 def index(is_page_exist):
 	urls = get_config_data()['urls']
 	return dict(urls=urls, )
