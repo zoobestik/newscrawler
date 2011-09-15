@@ -38,7 +38,7 @@ class PageParser():
             info.update(self.feed_info)
 
         info['items'] = self.posts
-        out = template('rss2.0', template_settings=dict(noescape=True), **(info))
+        out = template('rss2', template_settings=dict(noescape=True), **(info))
         return out 
 
 class RuSportsTribuna(PageParser):
