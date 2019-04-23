@@ -10,10 +10,11 @@
  
 		<lastBuildDate>{{last_build_date}}</lastBuildDate>
 		<docs>http://feed2.w3.org/docs/rss2.html</docs>
-		<generator>WeedsGP.com(crawler): Feed Generator 1.0</generator>
-		<webMaster>webmaster@weedsgp.com</webMaster>
+		<generator>Feeds RSS Crawler 1.0: {{parser}}</generator>
+		<webMaster>kb.chernenko@gmail.com</webMaster>
+
 		<image>
-			<url>http://www.sports.ru/i/logo_rss.gif</url>
+			<url>{{image}}</url>
 			<title>{{title}}</title>
 			<link>{{link}}</link>
 		</image>

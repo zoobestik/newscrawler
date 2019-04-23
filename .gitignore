@@ -1,2 +1,6 @@
 # Work IDE and editor files
 .idea
+*.iml
+
+venv
+*.pyc
