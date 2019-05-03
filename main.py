@@ -25,5 +25,3 @@ def generate_feed(id):
 
 # debug(True)
 application = default_app()
-
-# generate_feed_by_id(int(1))

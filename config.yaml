@@ -1,20 +1,12 @@
 urls:
   #------------------------------------------------------------------
-  - url:   http://www.sports.ru/tribuna/automoto/
+  - url:   https://www.sports.ru/tribuna/new.html
     parser: ru_sports_tribuna
 
   - url:   http://www.sports.ru/tribuna/automoto/new.html
     parser: ru_sports_tribuna
 
-  - url:   http://www.sports.ru/tribuna/automoto/f1/
+  - url:   http://www.sports.ru/tribuna/football/new.html
     parser: ru_sports_tribuna
 
-  - url:   http://www.sports.ru/tribuna/automoto/f1/new.html
-    parser: ru_sports_tribuna
-
-  - url:   http://www.sports.ru/tribuna/automoto/series/
-    parser: ru_sports_tribuna
-
-  - url:   http://www.sports.ru/tribuna/automoto/series/new.html
-    parser: ru_sports_tribuna
   #------------------------------------------------------------------

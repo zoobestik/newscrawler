@@ -15,7 +15,7 @@ def update_common_info(link, common_info):
 
 
 def generate(link, parser):
-    doc = request_uri_doc(link)
+    doc = request_uri_doc(link, 'GET')
 
     posts, common_info = parser(link, doc)
 

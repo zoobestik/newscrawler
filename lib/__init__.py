@@ -7,8 +7,8 @@ import lxml.html as lhtml
 http = httplib2.Http()
 
 
-def request_uri_doc(uri):
-    resp, html = http.request(uri, 'GET')
+def request_uri_doc(uri, method):
+    resp, html = http.request(uri, method)
     return lhtml.document_fromstring(html)
 
 
