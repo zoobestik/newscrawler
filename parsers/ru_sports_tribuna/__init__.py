@@ -1,7 +1,7 @@
 # coding=utf-8
 from urlparse import urljoin
 
-from lib import render_element_content as render_element
+from lib import render_element_text, render_element_clean
 
 
 def get_common_info():
@@ -27,7 +27,7 @@ def parse(link, doc):
             url = urljoin(link, lnk.attrib['href'])
 
             post = {
-                'title': render_element(h2).strip(),
+                'title': render_element_text(h2),
                 'link': url,
                 'guid': url,
             }
@@ -54,10 +54,10 @@ def parse(link, doc):
                     pass
 
                 if pub_date_value:
-                    post['pubDate'] = pub_date_value
+                    post['pubDate'] = render_element_text(pub_date_value)
 
                 if author:
-                    post['author'] = render_element(author).strip()
+                    post['author'] = render_element_text(author)
 
             comments_url = None
             try:
@@ -67,17 +67,10 @@ def parse(link, doc):
             except Exception:
                 pass
 
-            post = {
-                'title': render_element(h2).strip(),
-                'link': url,
-                'guid': url,
-                'description': render_element(post_node)
-            }
-
             if comments_url:
                 post['comments'] = comments_url
 
-            post['description'] = render_element(post_node)
+            post['description'] = render_element_clean(post_node)
             posts.append(post)
 
     return [posts, get_common_info()]
