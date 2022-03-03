@@ -1,10 +1,10 @@
-FROM alpine
+FROM python:3-alpine
 
 EXPOSE 3031
 
 WORKDIR /usr/src/app
 
-RUN apk add --update --no-cache python python-dev py-setuptools py-pip linux-headers g++ gcc libxslt-dev
+RUN apk add --update --no-cache linux-headers g++ gcc libxslt-dev
 
 COPY . .
 

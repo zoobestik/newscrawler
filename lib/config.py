@@ -1,12 +1,13 @@
 # coding: utf-8
-from yaml import load
+from yaml import safe_load
 
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
     from yaml import Loader, Dumper
 
-config_data = load(file('config.yaml', 'r'))
+with open("config.yaml", 'r') as stream:
+    config_data = safe_load(stream)
 
 
 def get_config_data():

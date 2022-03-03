@@ -1,5 +1,5 @@
 # coding=utf-8
-from urlparse import urljoin
+from urllib.parse import urljoin
 
 from lib import render_element_text, render_element_clean
 
